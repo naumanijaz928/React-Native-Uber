@@ -11,6 +11,8 @@ import React from "react";
 // import { Icon } from "react-native-elements";
 import { Icon } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
+import { selectOrigin } from "../slices/navSlice";
+import { useSelector } from "react-redux";
 const data = [
   {
     id: "1",
@@ -24,16 +26,17 @@ const data = [
     image: "https://cdn-icons-png.flaticon.com/512/3362/3362720.png",
     screen: "EatsScreen",
   },
-  //   {
-  //     id: "3",
-  //     title: "Order Girl",
-  //     image: "https://cdn-icons-png.flaticon.com/512/2763/2763444.png",
-  //     screen: "GirlScreen",
-  //   },
+  // {
+  //   id: "3",
+  //   title: "Order Girl",
+  //   image: "https://cdn-icons-png.flaticon.com/512/2763/2763444.png",
+  //   screen: "GirlScreen",
+  // },
 ];
 
 const NavOptions = () => {
   const navigation = useNavigation();
+  const origin = useSelector(selectOrigin);
   return (
     <FlatList
       data={data}
@@ -43,7 +46,12 @@ const NavOptions = () => {
         <TouchableOpacity
           onPress={() => navigation.navigate(item.screen)}
           style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}
+          // replace below line //
+          // disabled={!origin}
+          disabled={false}
         >
+          {/* replace below line */}
+          {/* <View style={tw`${!origin && "opacity-20"}`}> */}
           <View>
             <Image
               source={{ uri: item.image }}

@@ -12,20 +12,20 @@ const Map = () => {
       mapType="mutedStandard"
       style={tw`flex-1`}
       initialRegion={{
-        latitude: origin?.location?.lat || 31.472,
-        longitude: origin?.location?.lng || 74.3724,
+        latitude: origin?.location?.lat,
+        longitude: origin?.location?.lng,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005,
       }}
     >
-      {(origin?.location || true) && (
+      {origin?.location && (
         <Marker
           coordinate={{
-            latitude: origin?.location?.lat || 31.472,
-            longitude: origin?.location?.lng || 74.3724,
+            latitude: origin?.location?.lat,
+            longitude: origin?.location?.lng,
           }}
           title="Origin"
-          description={origin?.description || "DHA tekboox"}
+          description={origin?.description}
           identifier="origin"
         />
       )}
